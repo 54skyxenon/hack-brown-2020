@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Header } from 'semantic-ui-react'
 
-class Unauthorized extends React {
+class Unauthorized extends Component {
   render() {
     return(
       <Grid centered columns={2}>

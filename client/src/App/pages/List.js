@@ -1,6 +1,8 @@
+// Keep for reference on how to perform fetches
+
 import React, { Component } from 'react';
 
-class List extends Component {
+export default class List extends Component {
   // Initialize the state
   constructor(props){
     super(props);
@@ -49,5 +51,3 @@ class List extends Component {
     );
   }
 }
-
-export default List;
