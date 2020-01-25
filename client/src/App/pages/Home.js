@@ -6,7 +6,6 @@ export default class Home extends Component {
     return (
     <div className="App">
       <h1>Corvus</h1>
-      {/* Link to Community.js */}
       <Link to={'./mission'}>
         <button variant="raised">
             Mission

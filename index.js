@@ -27,5 +27,5 @@ app.post("/login",
 // Run the server
 const port = process.env.PORT || 5000;
 app.listen(port);
-console.log('Express backend is listening on port ' + port);
+console.log('Backend is listening on port ' + port + ' and frontend is listening on port 3000');
 
