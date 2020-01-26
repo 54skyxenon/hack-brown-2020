@@ -1,51 +1,53 @@
 import React, { Component } from 'react';
+import { Grid, Button, Form } from 'semantic-ui-react';
 
 export default class LoginForm extends Component {
-    // The constructor
-    constructor(props) {
-        super(props);
-        this.state = { isRegistering: false, email: '', password: '' };
-        this.toggleRegister = this.toggleRegister.bind(this);
-    }
+  // The constructor
+  constructor(props) {
+    super(props);
+    this.state = { isRegistering: false, email: '', password: '' };
+    this.updateEmail = this.updateEmail.bind(this);
+    this.updatePassword = this.updatePassword.bind(this);
+  }
 
-    // Change the state to register mode, and vice versa
-    toggleRegister() {
-        this.setState({
-            isRegistering: !this.state.isRegistering
-        });
-    }
+  // Update the email field when the user types
+  updateEmail = (e) => this.setState({ email: e.target.value })
 
-    render() {
-      return (
+  // Update the password field when the user types
+  updatePassword = (e) => this.setState({ password: e.target.value })
+
+  render() {
+    return (
+      <div>
         <div>
-          <div>
-              <h1>Login</h1>
-              <button
-                onClick={this.toggleRegister}
-                variant="raised"
-              >
-                Need an account? Register
-              </button>
-          </div>
+          <h1>Login</h1>
+          <Form method="post" action="/login">
+            <Form.Field>
+              <input placeholder='Email Address'
+                name='email'
+                onChange={this.updateEmail}
+                value={this.state.email} />
+            </Form.Field>
+            <Form.Field>
+              <input placeholder='Password'
+                type='password'
+                name='password'
+                onChange={this.updatePassword}
+                value={this.state.password} />
+            </Form.Field>
+            <Grid centered columns={6}>
+              <Grid.Column>
+                <Button
+                  secondary
+                  type='submit'
+                >
+                  Log In
+            </Button>
+              </Grid.Column>
+            </Grid>
+          </Form>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 }
-
-// class Register extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { email: '', password: '', confirmPassword: '' };
-//     }
-//
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Register</h1>
-//                 <button variant="raised" onClick={this.props.toggleRegister}>
-//                     Already have an account? Login
-//                 </button>
-//             </div>
-//         );
-//     }
-// }
