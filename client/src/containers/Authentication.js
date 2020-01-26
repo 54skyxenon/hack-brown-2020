@@ -1,11 +1,8 @@
-// Used to be Home.js
-
 import React, { Component } from 'react';
 import RegisterForm from '../components/forms/RegisterForm';
-// import LoginForm from '../components/forms/LoginForm';
 
-// Perform a GET request to the backend to test if user is logged in
 import axios from 'axios';
+import Dashboard from '../components/Dashboard';
 
 import { Grid, Header } from 'semantic-ui-react'
 
@@ -13,34 +10,41 @@ export default class Authentication extends Component {
   constructor(props) {
     super(props);
     this.state = { authenticated: false };
-    this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.setAuthStatus = this.setAuthStatus.bind(this);
   }
 
+  // We want to update the user's authentication status upon loading the page
   componentDidMount() {
-    this.isAuthenticated();
+    this.setAuthStatus();
   }
 
-  isAuthenticated() {
+  // Calls the backend API to check if we're logged in
+  setAuthStatus() {
     axios.get('http://localhost:5000/api/token')
       .then(res => {
-        console.log("Then clause ran: " + res.data)
-        this.setState({ authenticated: true });
+        if (res.data === "logged_in") {
+          alert("Successfully logged in!");
+          this.setState({ authenticated: true });
+        } else {
+          this.setState({ authenticated: false });
+        }
       })
       .catch(err => {
-        return true;
+        this.setState({ authenticated: false });
       })
   }
 
+  // If we are authenticated, start playing the game
+  // Otherwise, show a registration screen
   render() {
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-
           {
             this.state.authenticated ?
-              <>
-                <h1> Welcome back! </h1>
-              </> :
+              <Dashboard
+                startGame={this.props.startGame}
+              /> :
               <>
                 <Header as='h1' textAlign='center'>
                   Before we get started, what's your name<br />and email?

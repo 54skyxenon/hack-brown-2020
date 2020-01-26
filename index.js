@@ -89,8 +89,7 @@ app.post("/logout", (req, res, next) => {
 
 // Returns the user auth token
 app.get("/api/token", (req, res, next) => {
-    console.log("API Called!");
-    // console.log(firebase.auth().currentUser ? "logged_in" : "logged_out");
+    console.log("API Called! Currently " + (firebase.auth().currentUser ? "logged_in" : "logged_out"));
     res.send(firebase.auth().currentUser ? "logged_in" : "logged_out");
 })
 

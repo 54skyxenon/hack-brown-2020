@@ -26,6 +26,9 @@ export default class Home extends Component {
             Login
         </button>
       </Link>
+      <button variant="raised">
+          Logout
+      </button>
     </div>
     );
   }
