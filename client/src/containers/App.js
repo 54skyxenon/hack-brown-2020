@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Authentication from './Authentication';
@@ -15,7 +15,7 @@ import {
 import './App.css';
 
 export default class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       gameStarted: false,
@@ -28,13 +28,13 @@ export default class App extends Component {
   }
 
   render() {
-    return(
+    return (
       <>
         <Grid padded
-          style={{height: '100vh'}}
+          style={{ height: '100vh' }}
           className={this.state.gameStarted ? 'game-started' : 'game-not-started'}>
           <Grid.Row
-            style={{height: '15%'}}
+            style={{ height: '15%' }}
             centered={true}
           >
             <Grid.Column>
@@ -43,15 +43,18 @@ export default class App extends Component {
               />
             </Grid.Column>
           </Grid.Row>
-          <h1 className="navbar-middle">corvus</h1>
 
-          <Grid.Row style={{height: '85%'}}>
+          <h1 className="navbar-middle">
+            <a href="/" style={{ color: 'black'}}>corvus</a>
+          </h1>
+
+          <Grid.Row style={{ height: '85%' }}>
             <Grid.Column>
               <Switch>
                 <Route exact path='/'
                   render={(props) => <Authentication {...props}
-                  theme={this.state.theme}
-                  startGame={this.startGame} />}
+                    theme={this.state.theme}
+                    startGame={this.startGame} />}
                 />
                 <Route path="/mission" component={Mission} />
                 <Route path="/community" component={Community} />
@@ -59,7 +62,7 @@ export default class App extends Component {
                 <Route path="/login" component={LoginForm} />
                 <Route path="/game" component={Game} />
               </Switch>
-              </Grid.Column>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </>
