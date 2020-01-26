@@ -49,7 +49,7 @@ export default class Authentication extends Component {
                 <Header as='h1' textAlign='center'>
                   Before we get started, what's your name<br />and email?
                 <Header.Subheader>
-                    Create an account to track your progress.
+                  Create an account to track your progress.
                 </Header.Subheader>
                 </Header>
                 <RegisterForm />
