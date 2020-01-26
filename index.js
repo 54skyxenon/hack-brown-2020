@@ -27,9 +27,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// AUTHENTICATION
+// AUTHENTICATION Routes
 app.use(express.urlencoded({ extended: false }));
 
+// Register the user
 app.post("/register", (req, res, next) => {
     const { firstName, lastName, email, password, confirmPassword } = req.body;
 
@@ -61,11 +62,12 @@ app.post("/register", (req, res, next) => {
     }
 });
 
+// Login the user with firebase auth
 app.post("/login", (req, res, next) => {
     firebase.auth()
         .signInWithEmailAndPassword(req.body.email, req.body.password)
         .then(() => {
-            res.send("Success!");
+            res.redirect("/");
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -74,6 +76,7 @@ app.post("/login", (req, res, next) => {
         });
 });
 
+// Logout the user with firebase auth
 app.post("/logout", (req, res, next) => {
     firebase.auth()
         .signOut()
@@ -83,6 +86,13 @@ app.post("/logout", (req, res, next) => {
             res.redirect("/");
         });
 });
+
+// Returns the user auth token
+app.get("/api/token", (req, res, next) => {
+    console.log("API Called!");
+    // console.log(firebase.auth().currentUser ? "logged_in" : "logged_out");
+    res.send(firebase.auth().currentUser ? "logged_in" : "logged_out");
+})
 
 // Run the server
 const port = process.env.PORT || 5000;
