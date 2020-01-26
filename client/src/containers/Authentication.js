@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RegisterForm from '../components/forms/RegisterForm';
-import LoginForm from '../components/forms/LoginForm';
+import Dashboard from '../components/Dashboard';
 
 import { Grid, Header } from 'semantic-ui-react'
 
@@ -8,17 +8,19 @@ export default class Authentication extends Component {
   constructor(props) {
     super(props);
     this.state= {
-      authenticated: false,
+      authenticated: true,
     }
   }
   render() {
+    console.log(this.props.theme)
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-
           {
             this.state.authenticated ?
-            <LoginForm /> :
+            <Dashboard
+              startGame={this.props.startGame}
+            /> :
             <>
               <Header as='h1' textAlign='center'>
                 Before we get started, what's your name<br />and email?

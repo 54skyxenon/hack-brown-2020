@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Authentication from './Authentication';
@@ -7,21 +7,61 @@ import Community from '../components/Community';
 import Profile from '../components/Profile';
 import LoginForm from '../components/forms/LoginForm';
 import Navbar from '../components/Navbar';
+import Game from '../components/Game';
+import {
+  Grid
+} from 'semantic-ui-react';
 
 import './App.css';
 
-const App = () => (
-  <>
-    <Navbar />
-    <section id="main-content">
-      <Switch>
-        <Route exact path='/' component={Authentication}/>
-        <Route path="/mission" component={Mission} />
-        <Route path="/community" component={Community} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/login" component={LoginForm} />
-      </Switch>
-    </section>
-  </>
-)
-export default App;
+export default class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      gameStarted: false,
+    }
+    this.startGame = this.startGame.bind(this);
+  }
+
+  startGame() {
+    this.setState({ gameStarted: true })
+  }
+
+  render() {
+    return(
+      <>
+        <Grid padded
+          style={{height: '100vh'}}
+          className={this.state.gameStarted ? 'game-started' : 'game-not-started'}>
+          <Grid.Row
+            style={{height: '15%'}}
+            centered={true}
+          >
+            <Grid.Column>
+              <Navbar
+                gameMode={this.state.gameStarted}
+              />
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row style={{height: '85%'}}>
+            <Grid.Column>
+              <Switch>
+                <Route exact path='/'
+                  render={(props) => <Authentication {...props}
+                  theme={this.state.theme}
+                  startGame={this.startGame} />}
+                />
+                <Route path="/mission" component={Mission} />
+                <Route path="/community" component={Community} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/login" component={LoginForm} />
+                <Route path="/game" component={Game} />
+              </Switch>
+              </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </>
+    )
+  }
+}
