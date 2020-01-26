@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Unauthorized from '../Unauthorized';
-import LogIn from '../LogIn';
-import Home from './pages/Home';
+import Unauthorized from './Unauthorized';
+import RegisterForm from '../components/forms/RegisterForm';
+import Home from '../components/Home';
 // import List from './pages/List';
-import Mission from './pages/Mission';
-import Community from './pages/Community';
-import Profile from './pages/Profile';
-import Login from './pages/Login';
+import Mission from '../components/Mission';
+import Community from '../components/Community';
+import Profile from '../components/Profile';
+import Login from '../components/Login';
 
 import './App.css';
 
@@ -24,7 +24,7 @@ const App = () => (
     </Switch>
 
     <Unauthorized>
-      <LogIn />
+      <RegisterForm />
     </Unauthorized>
   </>
 )
