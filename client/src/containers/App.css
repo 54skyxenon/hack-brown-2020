@@ -36,3 +36,18 @@
 .game-not-started {
   background: #FFE9A7;
 }
+
+.navbar-middle {
+    display:block;
+    position: relative;
+    top:-13%;
+    left:0;
+    right:0;
+    margin: 0 auto;
+    transform: translateY(50%);
+    /* transform: translateX(50%); */
+}
+
+.dashboard {
+  background: url(yang_gang.png);
+}

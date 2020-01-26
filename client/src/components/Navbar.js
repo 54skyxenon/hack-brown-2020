@@ -1,35 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from  'semantic-ui-react';
 
-export default class Home extends Component {
-  render() {
-    return (
-    <div className="App">
-      <h1>Corvus</h1>
+const Home = () => (
+  <Menu secondary>
+    <Menu.Item
+      name='features'
+    >
       <Link to={'./mission'}>
-        <button variant="raised">
-            Mission
-        </button>
+        mission
       </Link>
+    </Menu.Item>
+
+    <Menu.Item
+      name='testimonials'
+    >
       <Link to={'./community'}>
-        <button variant="raised">
-            Community
-        </button>
+        community
       </Link>
+    </Menu.Item>
+
+    <Menu.Item
+      name='sign-in'
+    >
       <Link to={'./profile'}>
-        <button variant="raised">
-            Profile
-        </button>
+        profile
       </Link>
+    </Menu.Item>
+
+    <Menu.Item
+      name='sign-in'
+    >
       <Link to={'./login'}>
-        <button variant="raised">
-            Login
-        </button>
+        login
       </Link>
-      <button variant="raised">
-          Logout
-      </button>
-    </div>
-    );
-  }
-}
+    </Menu.Item>
+    <Menu.Menu position='right'>
+      <Menu.Item>
+        <img src='corvus.png' alt="corvus" />
+      </Menu.Item>
+    </Menu.Menu>
+  </Menu>
+);
+
+export default Home;
