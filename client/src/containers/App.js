@@ -43,6 +43,7 @@ export default class App extends Component {
               />
             </Grid.Column>
           </Grid.Row>
+          <h1 className="navbar-middle">corvus</h1>
 
           <Grid.Row style={{height: '85%'}}>
             <Grid.Column>

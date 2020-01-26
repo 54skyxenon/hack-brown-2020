@@ -12,7 +12,6 @@ export default class Authentication extends Component {
     }
   }
   render() {
-    console.log(this.props.theme)
     return (
       <Grid centered columns={2}>
         <Grid.Column>
