@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Grid, Button, Form } from 'semantic-ui-react';
-// import axios from 'axios';
 
 export default class RegisterForm extends Component {
   constructor(props) {
@@ -34,28 +33,8 @@ export default class RegisterForm extends Component {
 
   /**
    * Register the user by POSTing to the express backend
-   * But it doesn't work so we're just relying on form action
+   * Relying on form action instead of axios :(
    **/
-
-  /* 
-  handleRegister = (e) => {
-    e.preventDefault();
-
-    const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword
-    };
-
-    if (this.state.password === this.state.confirmPassword) {
-      axios.post(`http://localhost:5000/register`, { user })
-    } else {
-      alert("Passwords don't match!")
-    }
-  }
-  */
 
   render() {
     return (

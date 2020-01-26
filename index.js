@@ -78,13 +78,18 @@ app.post("/login", (req, res, next) => {
 
 // Logout the user with firebase auth
 app.post("/logout", (req, res, next) => {
-    firebase.auth()
+    console.log("Logout API called!");
+    if (firebase.auth().currentUser) {
+        firebase.auth()
         .signOut()
         .then(() => {
-            res.redirect("/");
+            res.send("Successfully logged out!");
         }).catch(err => {
-            res.redirect("/");
+            res.send("Something went wrong.");
         });
+    } else {
+        res.send("You aren't logged in in the first place!");
+    }
 });
 
 // Returns the user auth token
