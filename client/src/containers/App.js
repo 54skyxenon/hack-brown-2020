@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import Authentication from './Authentication';
 import Mission from '../components/Mission';
 import Community from '../components/Community';
+import Discussion from '../Discussion';
 import Profile from '../components/Profile';
 import LoginForm from '../components/forms/LoginForm';
 import Navbar from '../components/Navbar';
@@ -58,6 +58,7 @@ export default class App extends Component {
                 />
                 <Route path="/mission" component={Mission} />
                 <Route path="/community" component={Community} />
+                <Route path="/discussion" component={Discussion} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/login" component={LoginForm} />
                 <Route path="/game" component={Game} />

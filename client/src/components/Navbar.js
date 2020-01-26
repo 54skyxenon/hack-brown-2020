@@ -57,7 +57,7 @@ export default class Navbar extends Component {
         </Menu.Item>
 
         <Menu.Item name='sign-in'>
-          <Link to={'./profile'}>
+          <Link>
             profile
           </Link>
         </Menu.Item>
